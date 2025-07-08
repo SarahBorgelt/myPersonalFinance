@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>F.I.R.E. Calculator</title>
+     <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+     <nav class="navbar">
+        <ul>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../monteCarloAnalysis/monteCarlo.html">Monte Carlo Analysis</a></li>
+            <li><a href="../downpaymentCalculator/downpaymentCalculator.html">Home Downpayment Calculator</a></li>
+            <li><a href="../creditScoreCalculator/creditScore.html">Credit Score</a></li>
+            <li><a href="../fireCalculator/fire.html">F.I.R.E. Calculator</a></li>
+        </ul>
+     </nav>
+     <div class="content-area">
+          <form id="fire-calculator">
+               <h1>Are You a Part of the F.I.R.E. Movement?</h1>
+               <h2 class="italicize">If so, you've come to the right place!</h2>
+               <img src="fire.jpeg" alt="a road sign that says financial freedom, next exit">
+               <h3>Are you eager to retire early?</h3>
+               <p>If so, check out our F.I.R.E. calculator to determine how close you are to retirement.</p>
+
+               <label for="current-savings">1) What is your current savings?</label>
+               <input type="number" name="current-savings" id="current-savings" required placeholder="100,000">
+
+               <label for="annual-income">2) What is your desired annual income in retirement</label>
+               <input type="number" name="annual-income" id="annual-income" required placeholder="60,000">
+
+               <label for="years-until-retirement">3) How many years until you expect to retire?</label>
+               <input type="number" name="years-until-retirement" id="years-until-retirement" required placeholder="30">
+
+               <label for="annual-return">4) What is your expected annual return on investments (%)?</label>
+               <input type="number" name="annual-return" id="annual-return" required placeholder="7" step="0.01">
+
+               <label for="annual-inflation">5) What is your anticipated annual inflation rate (%)?</label>
+               <input type="number" name="annual-inflation" id="annual-inflation" required placeholder="3.5" step="0.01">
+
+               <label for="desired-safe-withdrawal">6) What is your desired safe withdrawl rate (%)?</label>
+               <input type="number" name="desired-safe-withdrawal" id="desired-safe-withdrawal" required placeholder="4" step="0.01">
+
+               <button type="submit">Calculate</button>
+          </form>
+          <div id="result"></div>
+          <script src="fire.js"></script>
+     </div>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Monte Carlo Analysis</title>
+     <link rel="stylesheet" href="../styles.css">
+</head>
+<body class="monte-carlo-analysis">
+     <nav class="navbar">
+        <ul>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../monteCarloAnalysis/monteCarlo.html">Monte Carlo Analysis</a></li>
+            <li><a href="../downpaymentCalculator/downpaymentCalculator.html">Home Downpayment Calculator</a></li>
+            <li><a href="../creditScoreCalculator/creditScore.html">Credit Score</a></li>
+            <li><a href="../fireCalculator/fire.html">F.I.R.E. Calculator</a></li>
+        </ul>
+     </nav>
+     <div class="content-area">
+          <form id="monte-carlo-form">
+               <h1>Are You Worried About Having Enough Saved for Retirement?</h1>
+               <img src="retirement.jpg" alt="Retirement Image" style="width: 100%; height: auto;">
+               <p>If so, you've come to the right place! A Monte Carlo analysis will predict the likelihood of you having a certain amount of money at retirement age. By using this analysis, you will gain a general idea of the amount you may have saved at retirement. To begin, please enter your personal information below:</p>
+
+               <h2>Retirement Savings Phase </h2>
+               
+               <label for="current-investment">Initial Investment Value ($):</label>
+               <input type="number" id="current-investment" name="current-investment" required>
+
+               <label for="years-to-retirement">Years to Retirement:</label>
+               <input type="number" id="years-to-retirement" name="years-to-retirement" required>
+
+               <label for="annual-contribution">Annual Contribution ($):</label>
+               <input type="number" id="annual-contribution" name="annual-contribution" required>
+
+               <h2>Market Assumptions</h2>
+
+               <label for="expected-return">Expected Annual Return (%):</label>
+               <input type="number" id="expected-return" name="expected-return" step="0.01" value="10" required>
+
+               <label for="expected-volatility">Expected Volatility (%):</label>
+               <input type="number" id="expected-volatility" name="expected-volatility" value="19.60" step="0.01" required>
+
+               <label for="simulation-count">Number of Simulations:</label>
+               <input type="number" id="simulation-count" name="simulation-count" value="10000" required>
+
+               <label for="inflation-rate">Expected Inflation Rate (%):</label>
+               <input type="number" id="inflation-rate" name="inflation-rate" value="3.11" step="0.01" required>
+
+               <h2>Retirement Spending Phase</h2>
+
+               <label for="annual-withdrawal">Annual Withdrawal Amount ($):</label>
+               <input type="number" id="annual-withdrawal" name="annual-withdrawal" required>
+
+               <label for="years-in-retirement">Years in Retirement:</label>
+               <input type="number" id="years-in-retirement" name="years-in-retirement" required>
+
+               <button id="run-simulation">Run Simulation</button>
+               <div id="results" class="simulation-results"></div>
+          </form>
+     </div>
+     <script src="monteCarlo.js"></script>
+</body>
+</html>

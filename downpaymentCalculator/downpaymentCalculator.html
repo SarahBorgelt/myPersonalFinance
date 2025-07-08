@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Downpayment Calculator</title>
+     <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+     <nav class="navbar">
+        <ul>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../monteCarloAnalysis/monteCarlo.html">Monte Carlo Analysis</a></li>
+            <li><a href="../downpaymentCalculator/downpaymentCalculator.html">Home Downpayment Calculator</a></li>
+            <li><a href="../creditScoreCalculator/creditScore.html">Credit Score</a></li>
+            <li><a href="../fireCalculator/fire.html">F.I.R.E. Calculator</a></li>
+        </ul>
+     </nav>
+<div class="content-area">
+     <h1>Downpayment Calculator</h1>
+     <p>Use this calculator to estimate your downpayment for a home in Columbus, Ohio.</p>
+     <form id="downpayment-form">
+          <label for="home-price">Home Price ($):</label>
+          <input type="number" id="home-price" name="home-price" required>
+
+          <label for="annual-insurance">Annual Insurance ($):</label>
+          <input type="number" id="annual-insurance" name="annual-insurance" required>
+
+          <label for="length-of-loan">Length of Loan (Years):</label>
+          <input type="number" id="length-of-loan" name="length-of-loan" required>
+
+          <label for="interest-rate">Interest Rate (%):</label>
+          <input type="number" id="interest-rate" name="interest-rate" step="0.01" min="0.01" required>
+          
+          <label for="tax-rate">Tax Rate (%):</label>
+          <input type="number" id="tax-rate" name="tax-rate" step="0.01" required>
+
+          <p>Will this be a rental property?</p>
+          <label for="rental-property-yes">
+               <input type="radio" id="rental-property-yes" name="rental-property" required value="Yes">Yes
+          </label>
+          <label for="rental-property-no">
+               <input type="radio" id="rental-property-no" name="rental-property" value="No">No
+          </label>
+
+          <div id="home-fields" style="display: none; margin-top: 15px;">
+               <label for="target-monthly-payment">What is your target monthly payment ($)?</label>
+               <input type="number" id="target-monthly-payment" name="target-monthly-payment" placeholder="$1,500.00">
+          </div>
+
+          <div id="rental-fields" style="display: none; margin-top: 15px;">
+               <label for="expected-cash-flow">What is your desired monthly cash flow ($)?</label>
+               <input type="number" id="expected-cash-flow" name="expected-cash-flow" placeholder="$300.00">
+
+               <p>What is your target rent?</p>
+               <label for="target-rent">Target Rent ($):</label>
+               <input type="number" id="target-rent" name="target-rent" placeholder="$1,500.00">
+
+               <p>What is your property management fee (%)?</p>
+               <label for="property-management-fee">Property Management Fee (%):</label>
+               <input type="number" id="property-management-fee" name="property-management-fee" placeholder="10" step="0.01">
+
+               <p>What are your expected monthly expenses for repair, maintenance, etc. ($)</p>
+               <label for="monthly-expenses">Monthly Expenses ($):</label>
+               <input type="number" id="monthly-expenses" name="monthly-expenses" placeholder="$200.00">
+          </div>
+
+         <button type="submit">Calculate Downpayment</button>
+     </form>
+     <div id="result">
+          <h2>Results</h2>
+     </div>
+     
+     <footer>
+          <p>&copy; 2025 Sarah Borgelt. All rights reserved.</p>
+     </footer>
+     </div>
+     <script src="downpaymentCalculator.js"></script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Credit Score Calculator</title>
+     <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+     <nav class="navbar">
+        <ul>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../monteCarloAnalysis/monteCarlo.html">Monte Carlo Analysis</a></li>
+            <li><a href="../downpaymentCalculator/downpaymentCalculator.html">Home Downpayment Calculator</a></li>
+            <li><a href="../creditScoreCalculator/creditScore.html">Credit Score</a></li>
+            <li><a href="../fireCalculator/fire.html">F.I.R.E. Calculator</a></li>
+        </ul>
+     </nav>
+     <div class="content-area">
+          <h1>Credit Score Calculator</h1>
+          <p>Are you interested in seeing how various events may impact your credit score? If so, you've come to the right place! Our calculator will estimate a credit score impact based on on-time payment %, credit utilization, age of credit, number of new accounts, and types of credit. To learn more about your personal finance situation, please check out our calculator below.</p>
+          <form id="creditScore">
+               <label for="on-time-payment"><strong>1) What percentage of the time do you pay on time?</strong></label>
+               <input type="number" id="on-time-payment" placeholder="90%" min="0" max="100" step="0.01">
+
+               <label for="credit-utilization"><strong>2) What percentage of your available credit is being utilized?</strong></label>
+               <input type="number" id="credit-utilization" placeholder="15%" min="0" max="100" step="1">
+
+               <label for="credit-age"><strong>3) How long has your oldest account been open (years)?</strong></label>
+               <input type="number" id="credit-age" placeholder="3 years" min="0" max="150" step="1">
+
+               <label for="new-accounts"><strong>4) How many new accounts do you have?</strong></label>
+               <input type="number" id="new-accounts" placeholder="3" min="0" max="150" step="1">
+
+               <label for="credit-mix"><strong>5) How many different types of credit do you have (i.e., revolving, installement, etc.)?</strong></label>
+               <input type="number" id="credit-mix" placeholder="2" min="0" max="5" step="1">
+               <button type="submit">Calculate Credit Score</button>
+          </form>
+          <div id="score-output"></div>
+          <script src="creditScore.js"></script>
+     </div>
+</body>
+</html>
