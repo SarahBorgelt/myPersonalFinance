@@ -13,7 +13,7 @@ This is a personal finance website featuring tools such as:
 - Estimate credit scores
 
 ## How to Use
-Open `https://sarahborgelt.github.io/myPersonalFinance/index.html` in your browser to start using the tools.
+Open the [Finance Website](https://sarahborgelt.github.io/myPersonalFinance/index.html) in your browser to start using the tools.
 
 ## Tech Stack
 - HTML
