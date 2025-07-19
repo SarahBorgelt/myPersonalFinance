@@ -15,25 +15,29 @@ document.getElementById('run-simulation').addEventListener('click', (event) => {
 
      for (let sim = 0; sim < numSimulations; sim++){
           let portfolio = initialInvestment;
+          let inflationAdjustedWithdrawal = annualWithdrawal
 
           for (let year=0; year < yearsToRetirement; year++){
-               const annualReturn =randomNormal(expectedReturn, volatility);
-               portfolio *= (1 + annualReturn);
+               const annualReturn =Math.max(-0.5, Math.min(0.5, randomNormal(expectedReturn, volatility)));
                portfolio += annualContribution;
+               portfolio *= (1 + annualReturn);
                portfolio /= (1 + inflationRate);
           }
 
           let success = true;
-          for (let year = 0; year < yearsInRetirement; year++){
-               const annualReturn = randomNormal(expectedReturn, volatility);
+          for (let year = 0; year < yearsInRetirement; year++) {
+               const annualReturn = Math.max(-0.5, Math.min(0.5, randomNormal(expectedReturn, volatility)));
                portfolio *= (1 + annualReturn);
-               portfolio -= annualWithdrawal;
-               portfolio /= (1 + inflationRate);
+               portfolio -= inflationAdjustedWithdrawal;
                if (portfolio < 0) {
+                    portfolio = 0;
                     success = false;
                     break;
                }
+          portfolio /= (1 + inflationRate);
+          inflationAdjustedWithdrawal *= (1 + inflationRate);
           }
+          
           if (success) successCount++;
           endingBalances.push(portfolio);
           }
