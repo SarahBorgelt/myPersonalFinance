@@ -35,6 +35,20 @@
           <label for="tax-rate">Tax Rate (%):</label>
           <input type="number" id="tax-rate" name="tax-rate" step="0.01" required>
 
+          <p>Does this property have monthly HOA fees?</p>
+          <label>
+               <input type="radio" name="hoa-radio" value="yes" id="hoa-yes"> Yes
+          </label>
+
+          <label>
+               <input type="radio" name="hoa-radio" value="no" id="hoa-no" checked> No
+          </label>
+
+          <div id="hoa-fees-container">
+               <label for="hoa-fees">Monthly HOA Fees ($):</label>
+               <input type="number" id="hoa-fees" name="hoa-fees" step="0.01" placeholder="150.00">
+          </div>
+
           <p>Will this be a rental property?</p>
           <label for="rental-property-yes">
                <input type="radio" id="rental-property-yes" name="rental-property" required value="Yes">Yes
@@ -65,7 +79,7 @@
                <input type="number" id="monthly-expenses" name="monthly-expenses" placeholder="$200.00">
           </div>
 
-         <button type="submit">Calculate Downpayment</button>
+          <button type="submit">Calculate Downpayment</button>
      </form>
      <div id="result">
           <h2>Results</h2>

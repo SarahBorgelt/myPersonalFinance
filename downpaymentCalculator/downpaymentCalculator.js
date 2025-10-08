@@ -1,27 +1,42 @@
-const yesRadio = document.getElementById("rental-property-yes");
-const noRadio = document.getElementById("rental-property-no");
+const rentalPropertyYes = document.getElementById("rental-property-yes");
+const rentalPropertyNo = document.getElementById("rental-property-no");
 const rentalFields = document.getElementById("rental-fields");
 const homeFields = document.getElementById("home-fields");
 const resultDiv = document.getElementById("result");
+const hoaYes = document.getElementById('hoa-yes');
+const hoaNo = document.getElementById('hoa-no');
+const hoaFeesInput = document.getElementById('hoa-fees');
+const hoaFeesContainer = document.getElementById('hoa-fees-container');
 
 
-// Initialize the display based on the default radio selection
-yesRadio.addEventListener("click", () => {
+// Initialize the display based on the default radio selection for HOA fees
+hoaFeesContainer.style.display = "none";
+hoaYes.addEventListener("click", () => {
+  hoaFeesContainer.style.display = "block";
+});
+
+hoaNo.addEventListener("click", () => {
+  hoaFeesContainer.style.display = "none";
+});
+
+
+// Initialize the display based on the default radio selection for rental property
+rentalPropertyYes.addEventListener("click", () => {
   rentalFields.style.display = "block";
   homeFields.style.display = "none";
 });
 
 
-noRadio.addEventListener("click", () => {
+rentalPropertyNo.addEventListener("click", () => {
   rentalFields.style.display = "none";
   homeFields.style.display = "block";
 });
 
 function initializeDisplay() {
-  if (yesRadio.checked) {
+  if (rentalPropertyYes.checked) {
     rentalFields.style.display = "block";
     homeFields.style.display = "none";
-  } else if (noRadio.checked) {
+  } else if (rentalPropertyNo.checked) {
     rentalFields.style.display = "none";
     homeFields.style.display = "block";
   } else {
@@ -64,13 +79,20 @@ let numberOfPayments = lengthOfLoan * 12;
 
 
  // Rental property calculations
-if(yesRadio.checked){
-  let mortgagePayment = targetRent - expectedCashFlow - monthlyExpenses - (annualInsurance / 12) - (((taxRate / 100) * homePrice) / 12) - ((propertyManagementFee / 100) * targetRent);
+if(rentalPropertyYes.checked){
+  const hoaFees = parseFloat(hoaFeesInput.value) || 0;
+  let mortgagePayment = targetRent - hoaFees - expectedCashFlow - monthlyExpenses - (annualInsurance / 12) - (((taxRate / 100) * homePrice) / 12) - ((propertyManagementFee / 100) * targetRent);
   let calcOne = mortgagePayment * ((((1 + monthlyInterestRate))** numberOfPayments) - 1);
   let calcTwo = monthlyInterestRate * ((1 + monthlyInterestRate)** numberOfPayments);
   let loanAmount = calcOne / calcTwo;
   let downPayment = homePrice - loanAmount;
 
+    // Prevent impossible results
+  if (downPayment < 0 || downPayment > homePrice) {
+    resultDiv.innerHTML = `<p style="color:red;">❌ Error: These inputs result in an invalid down payment (greater than the home price). Adjust your values and try again.</p>`;
+    return;
+  }
+  
   resultDiv.innerHTML = 
 `<h3>Results</h3>
   <p>Down Payment: $${downPayment.toLocaleString("en-US", {minimumFractionDigits: 2, maximumFractionDigits: 2})}</p>
@@ -78,10 +100,11 @@ if(yesRadio.checked){
 }
 
 // Home purchase calculations
-if(noRadio.checked){
+if(rentalPropertyNo.checked){
+  const hoaFees = parseFloat(hoaFeesInput.value) || 0;
   let monthlyInsurance = annualInsurance / 12;
   let monthlyTax = ((taxRate / 100) * homePrice) / 12;
-  let monthlyPI = targetMonthlyPayment - monthlyInsurance - monthlyTax;
+  let monthlyPI = targetMonthlyPayment - monthlyInsurance - monthlyTax - hoaFees;
   
   let factor = Math.pow(1 + monthlyInterestRate, numberOfPayments);
   let loanAmount = monthlyPI * (factor - 1) / (monthlyInterestRate * factor);
