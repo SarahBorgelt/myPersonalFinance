@@ -110,7 +110,12 @@ if(rentalPropertyNo.checked){
   let loanAmount = monthlyPI * (factor - 1) / (monthlyInterestRate * factor);
   let downPayment = homePrice - loanAmount;
 
-
+    // Prevent impossible results
+  if (downPayment < 0 || downPayment > homePrice) {
+    resultDiv.innerHTML = `<p style="color:red;">❌ Error: These inputs result in an invalid down payment (greater than the home price). Adjust your values and try again.</p>`;
+    return;
+  }
+  
   resultDiv.innerHTML = `<h3>Results</h3>
   <p>Down Payment: $${downPayment.toLocaleString(
     "en-US",{minimumFractionDigits: 2, maximumFractionDigits: 2})}
