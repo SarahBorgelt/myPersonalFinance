@@ -3,6 +3,8 @@
 
 ![This screenshot shows the Monte Carlo Analysis tool, designed for users to estimate whether their portfolio will last in retirement](Screenshot.png)
 
+--- 
+
 ## 📌 Overview
 
 The Personal Finance Website is an interactive, web-based platform designed to help users make informed financial decisions through a suite of practical tools. It provides a comprehensive approach to personal finance by combining calculators, simulations, and analysis features that cover investments, credit, and long-term financial planning.
